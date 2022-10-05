@@ -1,0 +1,13 @@
+.cards__heartBtn {
+  margin: 0;
+  margin: 5px 5px 0 0;
+  min-width: 22px;
+  height: 19px;
+  background: url(../../../images/heart.svg);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.5s;
+}
+.cards__heartBtn:hover {
+  opacity: 0.5;
+}

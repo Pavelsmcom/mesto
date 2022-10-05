@@ -1,0 +1,11 @@
+.cards {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 19px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 17px;
+  row-gap: 20px;
+}
+
