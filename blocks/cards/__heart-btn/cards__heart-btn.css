@@ -1,4 +1,4 @@
-.cards__heartBtn {
+.cards__heart-btn {
   margin: 0;
   margin: 5px 5px 0 0;
   min-width: 22px;
@@ -8,6 +8,6 @@
   cursor: pointer;
   transition: opacity 0.5s;
 }
-.cards__heartBtn:hover {
+.cards__heart-btn:hover {
   opacity: 0.5;
 }

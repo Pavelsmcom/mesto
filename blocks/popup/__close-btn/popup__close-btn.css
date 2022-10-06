@@ -1,4 +1,4 @@
-.popup__closeBtn {
+.popup__close-btn {
   width: 32px;
   height: 32px;
   background: url(../../../images/close.svg);
@@ -11,11 +11,11 @@
   right: -40px;
   transition: opacity 0.5s;
 }
-.popup__closeBtn:hover {
+.popup__close-btn:hover {
   opacity: 0.6;
 }
 @media screen and (max-width: 767px) {
-  .popup__closeBtn {
+  .popup__close-btn {
     width: 20px;
     height: 20px;
     top: -36px;

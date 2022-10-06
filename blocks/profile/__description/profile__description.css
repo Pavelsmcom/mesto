@@ -1,11 +1,10 @@
 .profile__description {
   margin: 0;
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  color: #ffffff;
+  color: #fff;
   padding-top: 10px;
   max-width: 294px;
   white-space: nowrap;

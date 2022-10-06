@@ -1,7 +1,7 @@
 .popup__input {
   border: none;
   display: block;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #000;
   width: 358px;
   height: 27px;
   margin: 0 0 29px 36px;
@@ -11,7 +11,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #000000;
+  color: #000;
 }
 .popup__input:focus {
   outline: none;
