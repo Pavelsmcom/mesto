@@ -9,15 +9,17 @@ const popupInputName = popup.querySelector('input[name="name"]');
 const popupForm = popup.querySelector('form[name="form"]')
 const popupInputDescription = popup.querySelector('input[name="description"]');
 
-function closePopup(){
+function closePopup() {
   popup.classList.remove(POPUP_OPENED);
 };
-function openPopup(){
+
+function openPopup() {
   popup.classList.add(POPUP_OPENED);
   popupInputName.value = profileName.textContent;
   popupInputDescription.value = profileDescription.textContent;
 };
-function submitPopup(event){
+
+function submitPopup(event) {
   event.preventDefault();
   profileName.textContent = popupInputName.value;
   profileDescription.textContent = popupInputDescription.value;
@@ -27,6 +29,3 @@ function submitPopup(event){
 profileEditBtn.addEventListener('click',openPopup);
 popupCloseBtn.addEventListener('click',closePopup);
 popupForm.addEventListener('submit',submitPopup);
-
-
-
