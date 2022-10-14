@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
     <script defer src="./scripts/index.js"></script>
     <title lang="en">Mesto</title>
   </head>
@@ -11,13 +11,13 @@
     <div class="page">
       <!--header-->
       <header class="header">
-        <img class="logo" src="./images/logo/logo.svg" alt="Логотип Место">
+        <img class="logo" src="./images/logo/logo.svg" alt="Логотип Место" />
       </header>
       <!--main-->
       <main class="content">
         <section class="profile">
           <div class="profile__container">
-            <img class="profile__avatar" src="./images/Jacques.jpg" alt="Аватар">
+            <img class="profile__avatar" src="./images/Jacques.jpg" alt="Аватар" />
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__edit-btn" type="button"></button>
             <p class="profile__description">Исследователь океана</p>
@@ -25,50 +25,7 @@
           <button class="profile__add-btn" type="button"></button>
         </section>
         <section class="elements" aria-label="Секция с фото-карточками">
-          <ul class="cards">
-            <li class="cards__item">
-              <img class="cards__image" src="./images/pic1.jpg" alt="Телецкое озеро">
-              <div class="cards__footer">
-                <h2 class="cards__description">Телецкое озеро</h2>
-                <button class="cards__heart-btn" type="button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img class="cards__image" src="./images/pic2.jpg" alt="Гейзерное озеро">
-              <div class="cards__footer">
-                <h2 class="cards__description">Гейзерное озеро</h2>
-                <button class="cards__heart-btn" type="button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img class="cards__image" src="./images/pic3.jpg" alt="Романцевские горы">
-              <div class="cards__footer">
-                <h2 class="cards__description">Романцевские горы</h2>
-                <button class="cards__heart-btn" type="button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img class="cards__image" src="./images/pic4.jpg" alt="Тихий океан">
-              <div class="cards__footer">
-                <h2 class="cards__description">Тихий океан</h2>
-                <button class="cards__heart-btn" type="button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img class="cards__image" src="./images/pic5.jpg" alt="Горелая сопка">
-              <div class="cards__footer">
-                <h2 class="cards__description">Горелая сопка</h2>
-                <button class="cards__heart-btn" type="button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img class="cards__image" src="./images/pic6.jpg" alt="Авачинская сопка">
-              <div class="cards__footer">
-                <h2 class="cards__description">Авачинская сопка</h2>
-                <button class="cards__heart-btn" type="button"></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="cards"></ul>
         </section>
       </main>
       <!--footer-->
@@ -79,13 +36,41 @@
         <div class="popup__container">
           <h2 class="popup__header">Редактировать профиль</h2>
           <form class="popup__form" name="form">
-            <input type="text" placeholder="Имя" name="name" class="popup__input">
-            <input type="text" placeholder="О себе" name="description" class="popup__input">
+            <input type="text" placeholder="Имя" name="name" class="popup__input" />
+            <input type="text" placeholder="О себе" name="description" class="popup__input" />
             <button class="popup__save-btn" type="submit">Сохранить</button>
           </form>
           <button class="popup__close-btn" type="button"></button>
         </div>
       </div>
+      <div class="popup">
+        <div class="popup__container">
+          <h2 class="popup__header">Новое место</h2>
+          <form class="popup__form" name="form">
+            <input type="text" placeholder="Название" name="name" class="popup__input" />
+            <input type="text" placeholder="Ссылка на картинку" name="description" class="popup__input" />
+            <button class="popup__save-btn" type="submit">Создать</button>
+          </form>
+          <button class="popup__close-btn" type="button"></button>
+        </div>
+      </div>
+      <div class="fullscreen-image">
+        <figure class="fullscreen-image__container">
+          <img class="fullscreen-image__image" alt="Полноэкранное изображение места" src="#!" />
+          <button class="fullscreen-image__close-btn" type="button"></button>
+          <figcaption class="fullscreen-image__description"></figcaption>
+        </figure>
+      </div>
+      <template class="cards__template">
+        <li class="cards__item">
+          <img class="cards__image" src="" alt="Изображение места" />
+          <div class="cards__footer">
+            <h2 class="cards__description"></h2>
+            <button class="cards__heart-btn" type="button"></button>
+          </div>
+          <button class="cards__remove-btn" type="button"></button>
+        </li>
+      </template>
     </div>
   </body>
 </html>

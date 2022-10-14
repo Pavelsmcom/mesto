@@ -23,8 +23,10 @@
 @import url(../blocks/cards/__description/cards__description.css);
 @import url(../blocks/cards/__footer/cards__footer.css);
 @import url(../blocks/cards/__heart-btn/cards__heart-btn.css);
+@import url(../blocks/cards/__heart-btn/_active/cards__heart-btn_active.css);
 @import url(../blocks/cards/__image/cards__image.css);
 @import url(../blocks/cards/__item/cards__item.css);
+@import url(../blocks/cards/__remove-btn/cards__remove-btn.css);
 /* footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
@@ -36,3 +38,10 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__save-btn/popup__save-btn.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+/* fullscreen-image */
+@import url(../blocks/fullscreen-image/fullscreen-image.css);
+@import url(../blocks/fullscreen-image/__close-btn/fullscreen-image__close-btn.css);
+@import url(../blocks/fullscreen-image/__description/fullscreen-image__description.css);
+@import url(../blocks/fullscreen-image/__image/fullscreen-image__image.css);
+@import url(../blocks/fullscreen-image/__container/fullscreen-image__container.css);
+@import url(../blocks/fullscreen-image/_opened/fullscreen-image_opened.css);

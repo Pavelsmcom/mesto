@@ -1,0 +1,24 @@
+.fullscreen-image__close-btn {
+  width: 32px;
+  height: 32px;
+  background: url(../../../images/close.svg);
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  transition: opacity 0.5s;
+}
+.fullscreen-image__close-btn:hover {
+  opacity: 0.6;
+}
+@media screen and (max-width: 767px) {
+  .fullscreen-image__close-btn {
+    width: 20px;
+    height: 20px;
+    top: -36px;
+    right: 0;
+  }
+}
