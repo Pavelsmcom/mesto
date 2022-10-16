@@ -1,4 +1,4 @@
-.fullscreen-image__description {
+.popup__image-description {
   position: absolute;
   left: 0;
   bottom: -25px;
@@ -7,5 +7,5 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-  color: #ffffff;
+  color: #fff;
 }

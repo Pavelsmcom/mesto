@@ -19,10 +19,10 @@
           <div class="profile__container">
             <img class="profile__avatar" src="./images/Jacques.jpg" alt="Аватар" />
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-btn" type="button"></button>
+            <button class="profile__edit-btn" type="button" aria-label="Кнопка редактирования профиля"></button>
             <p class="profile__description">Исследователь океана</p>
           </div>
-          <button class="profile__add-btn" type="button"></button>
+          <button class="profile__add-btn" type="button" aria-label="Кнопка добавления места"></button>
         </section>
         <section class="elements" aria-label="Секция с фото-карточками">
           <ul class="cards"></ul>
@@ -32,33 +32,33 @@
       <footer class="footer">
         <p class="footer__copyright" lang="en">&copy; 2020 Mesto Russia</p>
       </footer>
-      <div class="popup">
+      <div class="popup popup_edit">
         <div class="popup__container">
           <h2 class="popup__header">Редактировать профиль</h2>
           <form class="popup__form" name="form">
-            <input type="text" placeholder="Имя" name="name" class="popup__input" />
-            <input type="text" placeholder="О себе" name="description" class="popup__input" />
+            <input type="text" placeholder="Имя" name="name" class="popup__input" required />
+            <input type="text" placeholder="О себе" name="description" class="popup__input" required />
             <button class="popup__save-btn" type="submit">Сохранить</button>
           </form>
-          <button class="popup__close-btn" type="button"></button>
+          <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
         </div>
       </div>
-      <div class="popup">
+      <div class="popup popup_add">
         <div class="popup__container">
           <h2 class="popup__header">Новое место</h2>
           <form class="popup__form" name="form">
-            <input type="text" placeholder="Название" name="name" class="popup__input" />
-            <input type="text" placeholder="Ссылка на картинку" name="description" class="popup__input" />
+            <input type="text" placeholder="Название" name="name" class="popup__input" required />
+            <input type="url" placeholder="Ссылка на картинку" name="description" class="popup__input" required />
             <button class="popup__save-btn" type="submit">Создать</button>
           </form>
-          <button class="popup__close-btn" type="button"></button>
+          <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
         </div>
       </div>
-      <div class="fullscreen-image">
-        <figure class="fullscreen-image__container">
-          <img class="fullscreen-image__image" alt="Полноэкранное изображение места" src="#!" />
-          <button class="fullscreen-image__close-btn" type="button"></button>
-          <figcaption class="fullscreen-image__description"></figcaption>
+      <div class="popup popup_dark" id="popupFullscreen">
+        <figure class="popup__image-container">
+          <img class="popup__image" alt="Полноэкранное изображение места" src="#!" />
+          <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
+          <figcaption class="popup__image-description"></figcaption>
         </figure>
       </div>
       <template class="cards__template">
@@ -66,9 +66,9 @@
           <img class="cards__image" src="#!" alt="Изображение места" />
           <div class="cards__footer">
             <h2 class="cards__description"></h2>
-            <button class="cards__heart-btn" type="button"></button>
+            <button class="cards__heart-btn" type="button" aria-label="Кнопка лайка места"></button>
           </div>
-          <button class="cards__remove-btn" type="button"></button>
+          <button class="cards__remove-btn" type="button" aria-label="Кнопка удаления места"></button>
         </li>
       </template>
     </div>

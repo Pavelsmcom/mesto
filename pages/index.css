@@ -35,13 +35,10 @@
 @import url(../blocks/popup/__close-btn/popup__close-btn.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__header/popup__header.css);
+@import url(../blocks/popup/__image-container/popup__image-container.css);
+@import url(../blocks/popup/__image-description/popup__image-description.css);
+@import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__save-btn/popup__save-btn.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-/* fullscreen-image */
-@import url(../blocks/fullscreen-image/fullscreen-image.css);
-@import url(../blocks/fullscreen-image/__close-btn/fullscreen-image__close-btn.css);
-@import url(../blocks/fullscreen-image/__description/fullscreen-image__description.css);
-@import url(../blocks/fullscreen-image/__image/fullscreen-image__image.css);
-@import url(../blocks/fullscreen-image/__container/fullscreen-image__container.css);
-@import url(../blocks/fullscreen-image/_opened/fullscreen-image_opened.css);
+@import url(../blocks/popup/_dark/popup_dark.css);
