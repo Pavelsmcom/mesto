@@ -1,5 +1,5 @@
 .popup__header {
-  margin: 34px 0 48px 36px;
+  margin: 34px 0 53px 36px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 900;
@@ -11,6 +11,6 @@
   .popup__header {
     font-size: 18px;
     line-height: 22px;
-    margin: 25px 0 74px 22px;
+    margin: 26px 0 78px 22px;
   }
 }

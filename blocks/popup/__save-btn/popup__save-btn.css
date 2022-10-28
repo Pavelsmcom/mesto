@@ -2,7 +2,7 @@
   width: 358px;
   height: 50px;
   display: block;
-  margin: 48px auto 37px auto;
+  margin: 11px auto 37px auto;
   padding: 0;
   border: none;
   cursor: pointer;
@@ -17,7 +17,7 @@
   transition: all 0.5s;
 }
 .popup__save-btn:hover {
-  background: rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.8);
 }
 @media screen and (max-width: 767px) {
   .popup__save-btn {
@@ -25,6 +25,6 @@
     height: 46px;
     font-size: 14px;
     line-height: 17px;
-    margin: 45px auto 25px auto;
+    margin: 9px auto 25px auto;
   }
 }

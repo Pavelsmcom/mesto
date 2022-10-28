@@ -4,8 +4,9 @@
   border-radius: 10px;
   width: 430px;
   position: relative;
+  cursor: auto;
 }
- @media screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .popup__container {
     width: 282px;
   }

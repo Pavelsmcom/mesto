@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
+    <script defer src="./scripts/validate.js"></script>
     <script defer src="./scripts/index.js"></script>
     <title lang="en">Mesto</title>
   </head>
@@ -32,29 +33,33 @@
       <footer class="footer">
         <p class="footer__copyright" lang="en">&copy; 2020 Mesto Russia</p>
       </footer>
-      <div class="popup popup_edit">
+      <div class="popup popup_type_edit">
         <div class="popup__container">
           <h2 class="popup__header">Редактировать профиль</h2>
-          <form class="popup__form" name="form">
-            <input type="text" placeholder="Имя" name="name" class="popup__input" required />
-            <input type="text" placeholder="О себе" name="description" class="popup__input" required />
-            <button class="popup__save-btn" type="submit">Сохранить</button>
+          <form class="popup__form" name="form_edit" novalidate>
+            <input class="popup__input" type="text" placeholder="Имя" name="name" required minlength="2" maxlength="40" />
+            <span class="popup__input-error name-error"></span>
+            <input class="popup__input" type="text" placeholder="О себе" name="description" required minlength="2" maxlength="200" />
+            <span class="popup__input-error description-error"></span>
+            <button class="popup__save-btn" type="submit" name="edit_btn">Сохранить</button>
           </form>
           <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
         </div>
       </div>
-      <div class="popup popup_add">
+      <div class="popup popup_type_add">
         <div class="popup__container">
           <h2 class="popup__header">Новое место</h2>
-          <form class="popup__form" name="form">
-            <input type="text" placeholder="Название" name="name" class="popup__input" required />
-            <input type="url" placeholder="Ссылка на картинку" name="description" class="popup__input" required />
-            <button class="popup__save-btn" type="submit">Создать</button>
+          <form class="popup__form" name="form_add" novalidate>
+            <input class="popup__input" type="text" placeholder="Название" name="title" required minlength="2" maxlength="30" />
+            <span class="popup__input-error title-error"></span>
+            <input class="popup__input" type="url" placeholder="Ссылка на картинку" name="link" id="email-input" required />
+            <span class="popup__input-error link-error"></span>
+            <button class="popup__save-btn" type="submit" name="add_btn">Создать</button>
           </form>
           <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
         </div>
       </div>
-      <div class="popup popup_dark" id="popupFullscreen">
+      <div class="popup popup_type_picture">
         <figure class="popup__image-container">
           <img class="popup__image" alt="Полноэкранное изображение места" src="#!" />
           <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
