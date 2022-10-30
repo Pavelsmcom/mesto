@@ -49,14 +49,24 @@ function hasInvalidInput(inputList) {
   });
 }
 
+//Function enable submit button
+function enableSubmitButton(buttonElement, validationObj) {
+  buttonElement.classList.add(validationObj.inactiveButtonClass);
+  buttonElement.disabled = true;
+}
+
+//Function disable submit button
+function disableSubmitButton(buttonElement, validationObj) {
+  buttonElement.classList.remove(validationObj.inactiveButtonClass);
+  buttonElement.disabled = false;
+}
+
 //Function change button state
 function toggleButtonState(inputList, buttonElement, validationObj) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(validationObj.inactiveButtonClass);
-    buttonElement.disabled = true;
+    enableSubmitButton(buttonElement, validationObj);
   } else {
-    buttonElement.classList.remove(validationObj.inactiveButtonClass);
-    buttonElement.disabled = false;
+    disableSubmitButton(buttonElement, validationObj);
   }
 }
 
@@ -64,10 +74,6 @@ function toggleButtonState(inputList, buttonElement, validationObj) {
 function setEventListeners(formElement, validationObj) {
   const inputList = Array.from(formElement.querySelectorAll(validationObj.inputSelector));
   const buttonElement = formElement.querySelector(validationObj.submitButtonSelector);
-
-  fillPopupEditInput();
-
-  toggleButtonState(inputList, buttonElement, validationObj);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
