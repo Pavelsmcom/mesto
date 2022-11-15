@@ -1,5 +1,12 @@
 'use strict';
 
+import { initialCards } from './constants';
+import { validationSettings } from './constants';
+import { FormValidator } from './FormValidator';
+import { Card } from './Card';
+
+console.log(validationSettings);
+
 const PopupOpenedClass = 'popup_opened';
 
 const profileName = document.querySelector('.profile__name');
@@ -25,7 +32,25 @@ const cardsContainer = document.querySelector('.cards');
 const cardElement = document.querySelector('.cards__template').content.querySelector('.cards__item');
 
 //Function----------------------------------------------------------------------------
-//Functuion Close popup
+// Function start vadidation
+function startValidation(validationSettings) {
+  const formList = Array.from(document.querySelectorAll(validationSettings.formSelector));
+
+  formList.forEach((form) => {
+    const newFormValidator = new FormValidator(validationSettings, form);
+    newFormValidator.enableValidation();
+  });
+}
+
+//Function Add cards
+function addInitialCards(cards) {
+  cards.forEach((card) => {
+    const newCard = new Card(card, cardElement);
+    const newCardElement = newCard.generateCard();
+    cardsContainer.prepend(newCardElement);
+  });
+}
+//Function Close popup
 function closePopup(popup) {
   popup.classList.remove(PopupOpenedClass);
   window.removeEventListener('keydown', closePopupByEscape);
@@ -54,11 +79,15 @@ function openPopup(popup) {
 //function Submit Addpopup
 function submitAddPopup(evt) {
   evt.preventDefault();
-  const newCard = {
+  const data = {
     name: popupAddInputTitle.value,
     link: popupAddInputLink.value,
   };
-  addCard(newCard);
+
+  const newCard = new Card(data, cardElement);
+  const newCardElement = newCard.generateCard();
+  cardsContainer.prepend(newCardElement);
+
   closePopup(popupAdd);
 }
 
@@ -68,42 +97,6 @@ function submitEditPopup(evt) {
   profileName.textContent = popupEditInputName.value;
   profileDescription.textContent = popupEditInputDescription.value;
   closePopup(popupEdit);
-}
-
-//function Create 1 place
-function createCard(newCard) {
-  const newCardElement = cardElement.cloneNode(true);
-
-  newCardElement.querySelector('.cards__description').textContent = newCard.name;
-  const cardImage = newCardElement.querySelector('.cards__image');
-  cardImage.src = newCard.link;
-  cardImage.alt = ` Изображение ${newCard.name} не загрузилось`;
-  //likeButton
-  newCardElement.querySelector('.cards__heart-btn').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('cards__heart-btn_active');
-  });
-  //RemoveButton
-  newCardElement.querySelector('.cards__remove-btn').addEventListener('click', function (evt) {
-    newCardElement.remove();
-  });
-  //PicturePopup opened
-  newCardElement.querySelector('.cards__image').addEventListener('click', () => {
-    popupPictureImage.src = newCard.link;
-    popupPictureImage.alt = ` Изображение ${newCard.name} не загрузилось`;
-    popupPictureDescription.textContent = newCard.name;
-    openPopup(popupPicture);
-  });
-  return newCardElement;
-}
-
-//function Add 1 place
-function addCard(newCard) {
-  cardsContainer.prepend(createCard(newCard));
-}
-
-//function Add initial place
-function addInitialCards() {
-  initialCards.forEach((card) => addCard(card));
 }
 
 //function Fill popup Edit input
@@ -119,8 +112,17 @@ function clearPopup(popup, validationObj) {
   inputList.forEach((inputElement) => {
     inputElement.value = '';
 
-    hideInputError(popup, inputElement, validationObj);
-    enableSubmitButton(buttonElement, validationObj);
+    //clear Input Error
+    const inputLinkError = popup.querySelector(`.${inputElement.name}-error`);
+    inputElement.classList.remove(validationObj.inputErrorClass);
+    inputLinkError.classList.remove(validationObj.errorClass);
+    inputLinkError.textContent = '';
+
+    //enable Submit Button
+    buttonElement.classList.add(validationObj.inactiveButtonClass);
+    buttonElement.disabled = true;
+
+    //-----------------------------------------------------------------------
   });
 }
 
@@ -143,8 +145,10 @@ popupEditForm.addEventListener('submit', (evt) => submitEditPopup(evt));
 popupPicture.addEventListener('mousedown', closePopupByClick);
 
 //main-------------------------------------------------------------------------------
-addInitialCards();
-enableValidation(validationSettings);
+
+addInitialCards(initialCards);
+startValidation(validationSettings);
+
 //-----------------------------------------------------------------------------------
 //Чтобы попапы не просвечивали при загрузке
 window.addEventListener('load', () => {
