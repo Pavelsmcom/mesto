@@ -1,11 +1,9 @@
 'use strict';
 
-import { initialCards } from './constants';
-import { validationSettings } from './constants';
-import { FormValidator } from './FormValidator';
-import { Card } from './Card';
-
-console.log(validationSettings);
+import { initialCards } from './constants.js';
+import { validationSettings } from './constants.js';
+import { FormValidator } from './FormValidator.js';
+import { Card, popupPicture } from './Card.js';
 
 const PopupOpenedClass = 'popup_opened';
 
@@ -23,10 +21,6 @@ const popupAdd = document.querySelector('.popup_type_add');
 const popupAddForm = document.forms.form_add;
 const popupAddInputTitle = popupAddForm.elements.title;
 const popupAddInputLink = popupAddForm.elements.link;
-
-const popupPicture = document.querySelector('.popup_type_picture');
-const popupPictureImage = popupPicture.querySelector('.popup__image');
-const popupPictureDescription = popupPicture.querySelector('.popup__image-description');
 
 const cardsContainer = document.querySelector('.cards');
 const cardElement = document.querySelector('.cards__template').content.querySelector('.cards__item');
@@ -57,7 +51,7 @@ function closePopup(popup) {
 }
 
 //Function press Escape to close popup
-function closePopupByEscape(evt) {
+export function closePopupByEscape(evt) {
   if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_opened'));
   }
@@ -71,7 +65,7 @@ function closePopupByClick(evt) {
 }
 
 //function Open popup
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add(PopupOpenedClass);
   window.addEventListener('keydown', closePopupByEscape);
 }

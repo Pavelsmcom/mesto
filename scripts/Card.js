@@ -1,5 +1,10 @@
 'use strict';
 
+import { openPopup, closePopupByEscape } from './index.js';
+export const popupPicture = document.querySelector('.popup_type_picture');
+const popupPictureImage = popupPicture.querySelector('.popup__image');
+const popupPictureDescription = popupPicture.querySelector('.popup__image-description');
+
 // Card Class
 export class Card {
   constructor(data, templateSelector) {
@@ -38,7 +43,9 @@ export class Card {
     popupPictureImage.src = this._link;
     popupPictureImage.alt = ` Изображение ${this._name} не загрузилось`;
     popupPictureDescription.textContent = this._name;
+
     openPopup(popupPicture);
+    window.addEventListener('keydown', closePopupByEscape);
   }
 
   generateCard() {
