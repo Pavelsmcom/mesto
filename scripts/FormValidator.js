@@ -5,6 +5,8 @@ export class FormValidator {
   constructor(validationSettings, form) {
     this._validationSetting = validationSettings;
     this._form = form;
+    this._inputList = Array.from(this._form.querySelectorAll(this._validationSetting.inputSelector));
+    this._buttonElement = this._form.querySelector(this._validationSetting.submitButtonSelector);
   }
 
   //Inputs
@@ -60,16 +62,21 @@ export class FormValidator {
       this._disableSubmitButton(buttonElement, this._validationSetting);
     }
   }
+  //Reset Validation
+  resetValidation() {
+    this._enableSubmitButton(this._buttonElement, this._validationSetting);
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+      inputElement.value = '';
+    });
+  }
 
   //Enable Validation
   enableValidation() {
-    const inputList = Array.from(this._form.querySelectorAll(this._validationSetting.inputSelector));
-    const buttonElement = this._form.querySelector(this._validationSetting.submitButtonSelector);
-
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(inputList, buttonElement);
+        this._toggleButtonState(this._inputList, this._buttonElement);
       });
     });
   }
