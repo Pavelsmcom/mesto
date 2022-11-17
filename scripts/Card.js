@@ -15,6 +15,7 @@ export class Card {
 
   _setEventListeners() {
     this._likeButton = this._element.querySelector('.cards__heart-btn');
+    this._cardImage = this._element.querySelector('.cards__image');
 
     this._likeButton.addEventListener('click', () => {
       this._handleHeartClick();
@@ -42,9 +43,8 @@ export class Card {
     this._setEventListeners();
 
     this._element.querySelector('.cards__description').textContent = this._name;
-    const cardImage = this._element.querySelector('.cards__image');
-    cardImage.src = this._link;
-    cardImage.alt = ` Изображение ${this._name} не загрузилось`;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = ` Изображение ${this._name} не загрузилось`;
     return this._element;
   }
 }

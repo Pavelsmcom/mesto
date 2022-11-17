@@ -133,8 +133,8 @@ popups.forEach((popup) => {
   });
 });
 
-popupAddForm.addEventListener('submit', (evt) => submitAddPopup(evt));
-popupEditForm.addEventListener('submit', (evt) => submitEditPopup(evt));
+popupAddForm.addEventListener('submit', submitAddPopup);
+popupEditForm.addEventListener('submit', submitEditPopup);
 
 //main-------------------------------------------------------------------------------
 
