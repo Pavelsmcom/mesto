@@ -3,20 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title lang="en">Mesto</title>
   </head>
   <body>
     <div class="page">
       <!--header-->
       <header class="header">
-        <img class="logo" src="./images/logo/logo.svg" alt="Логотип Место" />
+        <img class="logo" src="<%=require('./images/logo/logo.svg')%>" alt="Логотип Место" />
       </header>
       <!--main-->
       <main class="content">
         <section class="profile">
           <div class="profile__container">
-            <img class="profile__avatar" src="./images/Jacques.jpg" alt="Аватар" />
+            <img class="profile__avatar" src="<%=require('./images/Jacques.jpg')%>" alt="Аватар" />
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__edit-btn" type="button" aria-label="Кнопка редактирования профиля"></button>
             <p class="profile__description">Исследователь океана</p>
@@ -48,8 +47,8 @@
         <div class="popup__container">
           <h2 class="popup__header">Новое место</h2>
           <form class="popup__form" name="form_add" novalidate>
-            <input class="popup__input" type="text" placeholder="Название" name="title" required minlength="2" maxlength="30" />
-            <span class="popup__input-error title-error"></span>
+            <input class="popup__input" type="text" placeholder="Название" name="name" required minlength="2" maxlength="30" />
+            <span class="popup__input-error name-error"></span>
             <input class="popup__input" type="url" placeholder="Ссылка на картинку" name="link" id="email-input" required />
             <span class="popup__input-error link-error"></span>
             <button class="popup__save-btn" type="submit" name="add_btn">Создать</button>
@@ -75,6 +74,5 @@
         </li>
       </template>
     </div>
-    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
