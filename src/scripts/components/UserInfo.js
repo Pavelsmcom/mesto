@@ -2,18 +2,18 @@
 
 export class UserInfo {
   constructor(userInfo) {
-    this.name = userInfo.name;
-    this.description = userInfo.description;
-    this.profileName = document.querySelector('.profile__name');
-    this.profileDescription = document.querySelector('.profile__description');
+    this._name = userInfo.name;
+    this._description = userInfo.description;
+    this._profileName = document.querySelector('.profile__name');
+    this._profileDescription = document.querySelector('.profile__description');
   }
   getUserInfo() {
-    return { name: this.name, description: this.description };
+    return { name: this._name, description: this._description };
   }
   setUserInfo(userInfo) {
-    this.name = userInfo.name;
-    this.description = userInfo.description;
-    this.profileName.textContent = userInfo.name;
-    this.profileDescription.textContent = userInfo.description;
+    this._name = userInfo.name;
+    this._description = userInfo.description;
+    this._profileName.textContent = userInfo.name;
+    this._profileDescription.textContent = userInfo.description;
   }
 }

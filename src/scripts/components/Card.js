@@ -29,6 +29,7 @@ export class Card {
   }
   _handleRemoveBtnClick() {
     this._element.remove();
+    this._element = null;
   }
   generateCard() {
     this._element = this._getTemplate();

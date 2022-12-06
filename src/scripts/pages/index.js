@@ -32,33 +32,32 @@ function startValidation(validationSettings) {
     formValidators[form.getAttribute('name')] = newFormValidator;
   });
 }
-
+// Function open Full size popup
+function openFullSizePicture(name, link) {
+  popupFullSizePicture.open(name, link);
+}
 //main-------------------------------------------------------------------------------
 const user = new UserInfo({ name: 'Жак-Ив Кусто', description: 'Исследователь океана' });
 
-const picturePopup = new PopupWithImage(popupPicture);
-picturePopup.setEventListeners();
+const popupFullSizePicture = new PopupWithImage(popupPicture);
+popupFullSizePicture.setEventListeners();
 
-const editPopup = new PopupWithForm(popupEdit, (data) => {
+const popupUserProfile = new PopupWithForm(popupEdit, (data) => {
   user.setUserInfo(data);
 });
-editPopup.setEventListeners();
+popupUserProfile.setEventListeners();
 
-const addPopup = new PopupWithForm(popupAdd, (card) => {
-  const newCard = new Card(card, cardElement, (name, link) => {
-    picturePopup.open(name, link);
-  });
+const popupAddNewCard = new PopupWithForm(popupAdd, (card) => {
+  const newCard = new Card(card, cardElement, openFullSizePicture);
   const newCardElement = newCard.generateCard();
   cardList.addItem(newCardElement);
 });
-addPopup.setEventListeners();
+popupAddNewCard.setEventListeners();
 
 const cardList = new Section(
   {
     renderer: (card) => {
-      const newCard = new Card(card, cardElement, (name, link) => {
-        picturePopup.open(name, link);
-      });
+      const newCard = new Card(card, cardElement, openFullSizePicture);
       const newCardElement = newCard.generateCard();
       cardList.addItem(newCardElement);
     },
@@ -72,14 +71,14 @@ startValidation(validationSettings);
 //EventListener-----------------------------------------------------------------------
 buttonAddCard.addEventListener('click', () => {
   formValidators['form_add'].resetValidation();
-  addPopup.open();
+  popupAddNewCard.open();
 });
 
 buttonEditProfile.addEventListener('click', () => {
   formValidators['form_edit'].resetValidation();
   popupEditInputName.value = user.getUserInfo().name;
   popupEditInputDescription.value = user.getUserInfo().description;
-  editPopup.open();
+  popupUserProfile.open();
 });
 //-----------------------------------------------------------------------------------
 //Чтобы попапы не просвечивали при загрузке
