@@ -32,9 +32,13 @@ function startValidation(validationSettings) {
     formValidators[form.getAttribute('name')] = newFormValidator;
   });
 }
-// Function open Full size popup
-function openFullSizePicture(name, link) {
-  popupFullSizePicture.open(name, link);
+
+//Function createCard
+function createCard(card) {
+  const newCard = new Card(card, cardElement, (name, link) => {
+    popupFullSizePicture.open(name, link);
+  });
+  return newCard.generateCard();
 }
 //main-------------------------------------------------------------------------------
 const user = new UserInfo({ name: 'Жак-Ив Кусто', description: 'Исследователь океана' });
@@ -48,19 +52,13 @@ const popupUserProfile = new PopupWithForm(popupEdit, (data) => {
 popupUserProfile.setEventListeners();
 
 const popupAddNewCard = new PopupWithForm(popupAdd, (card) => {
-  const newCard = new Card(card, cardElement, openFullSizePicture);
-  const newCardElement = newCard.generateCard();
-  cardList.addItem(newCardElement);
+  cardList.addItem(createCard(card));
 });
 popupAddNewCard.setEventListeners();
 
 const cardList = new Section(
   {
-    renderer: (card) => {
-      const newCard = new Card(card, cardElement, openFullSizePicture);
-      const newCardElement = newCard.generateCard();
-      cardList.addItem(newCardElement);
-    },
+    renderer: (card) => cardList.addItem(createCard(card)),
   },
   '.cards'
 );
