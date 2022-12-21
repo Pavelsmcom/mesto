@@ -6,9 +6,9 @@ export class Section {
     this._renderer = renderer;
   }
   renderer(items) {
-    items.forEach((card) => {
-      this._renderer(card);
-    });
+    for (let i = items.length - 1; i >= 0; i--) {
+      this._renderer(items[i]);
+    }
   }
   addItem(element) {
     this._container.prepend(element);

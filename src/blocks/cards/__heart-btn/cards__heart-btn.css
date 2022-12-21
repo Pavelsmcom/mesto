@@ -1,6 +1,5 @@
 .cards__heart-btn {
-  margin: 0;
-  margin: 5px 5px 0 0;
+  margin-right: 5px;
   min-width: 22px;
   height: 19px;
   background: url(../../../images/heart.svg);

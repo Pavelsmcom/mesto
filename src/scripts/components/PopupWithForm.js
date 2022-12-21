@@ -7,6 +7,7 @@ export class PopupWithForm extends Popup {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
     this._form = this._popupSelector.querySelector('.popup__form');
+    this._submitButton = this._popupSelector.querySelector('.popup__save-btn');
   }
   _getInputValues() {
     this._inputList = this._popupSelector.querySelectorAll('.popup__input');
@@ -27,5 +28,8 @@ export class PopupWithForm extends Popup {
   close() {
     super.close();
     this._form.reset();
+  }
+  setSubmitStatus(status) {
+    this._submitButton.textContent = status;
   }
 }
