@@ -5,7 +5,7 @@ export class Section {
     this._container = document.querySelector(containerSelector);
     this._renderer = renderer;
   }
-  renderer(items) {
+  renderItems(items) {
     for (let i = items.length - 1; i >= 0; i--) {
       this._renderer(items[i]);
     }

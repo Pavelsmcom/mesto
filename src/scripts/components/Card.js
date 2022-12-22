@@ -12,6 +12,7 @@ export class Card {
     this._likeCounterValue = this._data.likes.length;
 
     this._cardElement = templateSelector;
+
     this._handleCardClick = handleCardClick;
     this._handleCardRemoveBtnClick = handleCardRemoveBtnClick;
     this._handleLikeClick = handleLikeClick;
@@ -26,6 +27,7 @@ export class Card {
     this._likeButton = this._element.querySelector('.cards__heart-btn');
     this._cardImage = this._element.querySelector('.cards__image');
     this._likeCounter = this._element.querySelector('.cards__like-counter');
+    this._deleteButton = this._element.querySelector('.cards__remove-btn');
     this._likeButton.addEventListener('click', () => {
       this._doLike();
     });
@@ -33,7 +35,7 @@ export class Card {
       this._handleCardClick(this._name, this._link);
     });
     if (this._isCreator()) {
-      this._element.querySelector('.cards__remove-btn').addEventListener('click', () => {
+      this._deleteButton.addEventListener('click', () => {
         this._handleRemoveBtnClick();
       });
     }
@@ -82,10 +84,11 @@ export class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    if (this._isCreator()) {
-      this._element.insertAdjacentHTML('beforeend', `<button class="cards__remove-btn" type="button" aria-label="Кнопка удаления места"></button>`);
-    }
     this._setEventListeners();
+    if (!this._isCreator()) {
+      this._deleteButton.remove();
+      this._deleteButton = null;
+    }
     this._element.querySelector('.cards__description').textContent = this._name;
     this._cardImage.src = this._link;
     this._cardImage.alt = ` Изображение ${this._name} не загрузилось`;

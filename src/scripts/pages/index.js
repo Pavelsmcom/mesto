@@ -48,17 +48,22 @@ function createCard(card) {
       popupFullSizePicture.open(name, link);
     },
     (card) => {
-      popupConfirm.open(() => {
-        api.deleteCard(card._cardId);
-        card.removeCard();
+      popupConfirm.open(async () => {
+        try {
+          await api.deleteCard(card._cardId);
+          popupConfirm.close();
+          card.removeCard();
+        } catch (Error) {
+          console.log(Error.message);
+        }
       });
     },
     async (card) => {
       try {
         const data = await api.changeLike(card._cardId, card.isLike);
         card.updateLikeData(data);
-      } catch {
-        console.log('Ошибка невозможно лайкнуть/убрать лайк');
+      } catch (Error) {
+        console.log(Error.message);
       }
     },
     userId
@@ -86,11 +91,12 @@ const cardList = new Section(
   try {
     const data = await api.getUserInfo();
     const cards = await api.getInitialCards();
+
     user.setUserInfo({ name: data.name, about: data.about });
     user.setUserAvatar(data.avatar);
-    cardList.renderer(cards);
-  } catch {
-    console.log('Ошибка невозможно отобразить данные пользователя или карточки');
+    cardList.renderItems(cards);
+  } catch (Error) {
+    console.log(Error.message);
   }
 })();
 
@@ -99,9 +105,10 @@ const popupUserProfile = new PopupWithForm(popupEdit, async (data) => {
   try {
     changeSubmitStatus(popupUserProfile, 'Сохранение...');
     const userInfo = await api.setUserInfo(data);
+    popupUserProfile.close();
     user.setUserInfo(userInfo);
-  } catch {
-    console.log('Ошибка невозможно изменить данные пользователя');
+  } catch (Error) {
+    console.log(Error.message);
   } finally {
     changeSubmitStatus(popupUserProfile, 'Сохранить');
   }
@@ -113,9 +120,10 @@ const popupChangeAvatar = new PopupWithForm(popupAvatar, async (data) => {
   try {
     changeSubmitStatus(popupChangeAvatar, 'Сохранение...');
     const response = await api.setAvatar(data.link);
+    popupChangeAvatar.close();
     user.setUserAvatar(response.avatar);
-  } catch {
-    console.log('Ошибка невозможно изменить аватар пользователя');
+  } catch (Error) {
+    console.log(Error.message);
   } finally {
     changeSubmitStatus(popupChangeAvatar, 'Сохранить');
   }
@@ -127,9 +135,10 @@ const popupAddNewCard = new PopupWithForm(popupAdd, async (card) => {
   try {
     changeSubmitStatus(popupAddNewCard, 'Сохранение...');
     const data = await api.addCard(card);
+    popupAddNewCard.close();
     cardList.addItem(createCard(data));
-  } catch {
-    console.log('Ошибка невозможно добавить новую карточку');
+  } catch (Error) {
+    console.log(Error.message);
   } finally {
     changeSubmitStatus(popupAddNewCard, 'Создать');
   }
